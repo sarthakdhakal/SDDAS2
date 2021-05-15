@@ -6,29 +6,30 @@ import java.util.UUID;
 
 public class CustomerProperty implements Serializable {
 
-    private int customer_id;
+    private String customer_id ;
     private String name;
     private String address;
-    private String phoneNumber;
+    private int phoneNumber;
+    private String email;
     private String username;
     private String password;
 
-    CustomerProperty(int customer_id, String name, String address, String phoneNumber, String username, String password) {
-        this.customer_id = customer_id;
+    public CustomerProperty(String name, String address, String email, int phoneNumber, String username, String password) {
+        this.customer_id =UUID.randomUUID().toString();
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.email= email;
         this.username = username;
         this.password = password;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customer_id;
     }
 
-    public void setCustomerID(String customer_id) {
 
-    }
+
 
     public String getName() {
         return name;
@@ -46,12 +47,18 @@ public class CustomerProperty implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getPhoneNumber() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

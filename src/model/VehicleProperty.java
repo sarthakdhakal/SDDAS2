@@ -1,8 +1,10 @@
 package model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 abstract class VehicleProperty implements Serializable {
+        public String vehicle_id ;
         private String make;
         private String model;
         private int topSpeed;
@@ -11,13 +13,16 @@ abstract class VehicleProperty implements Serializable {
         private boolean hired = false;
 
         VehicleProperty(String make,String model, int topSpeed, String registrationNumber, double dailyHireRate) {
+            this.vehicle_id = UUID.randomUUID().toString();
             this.make= make;
             this.model = model;
             this.topSpeed = topSpeed;
             this.registrationNumber = registrationNumber;
             this.dailyHireRate = dailyHireRate;
         }
-
+        public String getVehicleId() {
+        return vehicle_id;
+    }
 
         public String getMake() {
         return make;
