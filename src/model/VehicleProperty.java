@@ -10,10 +10,11 @@ abstract class VehicleProperty implements Serializable {
         private int topSpeed;
         private String registrationNumber;
         private double dailyHireRate;
-        private boolean hired = false;
+        private String hiredTo="";
 
         VehicleProperty(String make,String model, int topSpeed, String registrationNumber, double dailyHireRate) {
             this.vehicle_id = UUID.randomUUID().toString();
+            this.vehicle_id = this.vehicle_id.substring(this.vehicle_id.length()-5,this.vehicle_id.length());
             this.make= make;
             this.model = model;
             this.topSpeed = topSpeed;
@@ -64,12 +65,12 @@ abstract class VehicleProperty implements Serializable {
             this.dailyHireRate = dailyHireRate;
         }
 
-        public boolean isHired() {
-            return hired;
+        public String getHiredTo() {
+            return hiredTo;
         }
 
-        public void setHired(boolean hired) {
-            this.hired = hired;
+        public void setHiredTo(String hiredTo) {
+            this.hiredTo = hiredTo;
         }
     }
 

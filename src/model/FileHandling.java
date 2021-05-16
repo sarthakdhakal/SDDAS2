@@ -12,8 +12,29 @@ public class FileHandling {
   static ArrayList<CustomerProperty> customerProperties = new ArrayList<>();
 
   public static void addCars(CarProperty carProperty) {
+
+//  try{
+//    carProperties = (ArrayList<CarProperty>) loadCars();
+//     carProperties.add(carProperty);
+//  }catch (NullPointerException e){
+//    carProperties.add(carProperty);
+//  }
+
     carProperties = (ArrayList<CarProperty>) loadCars();
+
+    if (carProperties==null){
+      carProperties =new ArrayList<>();
+    }
     carProperties.add(carProperty);
+//    if (carProperties == null) {
+//      System.out.println("Ram");
+//      carProperties =new ArrayList<CarProperty>();
+//      carProperties.add(carProperty);
+//    }else{
+//      carProperties = (ArrayList<CarProperty>) loadCars();
+//      carProperties.add(carProperty);
+//    }
+
     try {
       FileOutputStream fos = new FileOutputStream("Cars.dat");
       ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -46,6 +67,7 @@ public class FileHandling {
 
       return ois.readObject();
     } catch (Exception e) {
+      e.printStackTrace();
       System.out.println("No data");
     }
 
@@ -54,10 +76,14 @@ public class FileHandling {
 
   public static void addLorry(LorryProperty lorryProperty) {
     lorryProperties = (ArrayList<LorryProperty>) loadLorry();
+
+    if (lorryProperties==null){
+      lorryProperties =new ArrayList<>();
+    }
     lorryProperties.add(lorryProperty);
 
     try {
-      FileOutputStream fos = new FileOutputStream("Lorry.dat");
+      FileOutputStream fos = new FileOutputStream("Lorry.dat", true);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
       oos.writeObject(lorryProperties);
       oos.close();
@@ -80,14 +106,17 @@ public class FileHandling {
 
       return ois.readObject();
     } catch (Exception e) {
-      System.out.println("Ram");
+      System.out.println("No data in lorry file");
     }
     return null;
   }
 
   public static void addCustomer(CustomerProperty customerProperty) {
-
     customerProperties = (ArrayList<CustomerProperty>) loadCustomer();
+
+    if (customerProperties==null){
+      customerProperties =new ArrayList<>();
+    }
     customerProperties.add(customerProperty);
 
     try {
@@ -113,7 +142,7 @@ public class FileHandling {
       return ois.readObject();
     } catch (Exception e) {
       e.printStackTrace();
-      System.out.println("Ram");
+      System.out.println("No data in customer file");
     }
     return null;
   }
@@ -152,8 +181,13 @@ public class FileHandling {
   //        return null;
   //    }
   public static void addMiniBus(MiniBusProperty miniBusProperty) {
+
     miniBusProperties = (ArrayList<MiniBusProperty>) loadMiniBus();
+    if (miniBusProperties==null){
+      miniBusProperties =new ArrayList<>();
+    }
     miniBusProperties.add(miniBusProperty);
+
     try {
       FileOutputStream fos = new FileOutputStream("MiniBus.dat", true);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -179,6 +213,16 @@ public class FileHandling {
       return ois.readObject();
     } catch (Exception e) {
       System.out.println("Ram");
+    }
+    return null;
+  }
+  public CarProperty displayCar(String car_id){
+    ArrayList<CarProperty> displayCar = (ArrayList<CarProperty>) FileHandling.loadCars();
+    for (CarProperty car : displayCar) {
+      if (car_id.equals(car.getVehicleId())){
+        return car;
+      }
+
     }
     return null;
   }

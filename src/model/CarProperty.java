@@ -6,13 +6,13 @@ public class CarProperty extends VehicleProperty {
   private int noOfDoors;
 
   public CarProperty(
-    String make,
-    String model,
-    int topSpeed,
-    String registrationNumber,
-    double dailyHireRate,
-    String typeOfFuel,
-    int noOfDoors
+          String make,
+          String model,
+          int topSpeed,
+          String registrationNumber,
+          double dailyHireRate,
+          String typeOfFuel,
+          int noOfDoors
   ) {
     super(make, model, topSpeed, registrationNumber, dailyHireRate);
     this.typeOfFuel = typeOfFuel;
@@ -34,4 +34,5 @@ public class CarProperty extends VehicleProperty {
   public void setNoOfDoors(int noOfDoors) {
     this.noOfDoors = noOfDoors;
   }
+
 }
