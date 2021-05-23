@@ -16,6 +16,7 @@ public class CustomerProperty implements Serializable {
 
     public CustomerProperty(String name, String address, String email, int phoneNumber, String username, String password) {
         this.customer_id =UUID.randomUUID().toString();
+        this.customer_id = this.customer_id.substring(this.customer_id.length()-5,this.customer_id.length());
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -28,13 +29,9 @@ public class CustomerProperty implements Serializable {
         return customer_id;
     }
 
-
-
-
     public String getName() {
         return name;
     }
-
 
     public void setName(String name) {
         this.name = name;
