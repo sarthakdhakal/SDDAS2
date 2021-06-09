@@ -2,7 +2,6 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FileHandling {
 
@@ -15,6 +14,11 @@ public class FileHandling {
   static ArrayList<LorryProperty> displayLorry = (ArrayList<LorryProperty>) FileHandling.loadLorry();
   static ArrayList<MiniBusProperty> displayMiniBus = (ArrayList<MiniBusProperty>) FileHandling.loadMiniBus();
   static ArrayList<CustomerProperty> displayCustomer = (ArrayList<CustomerProperty>) FileHandling.loadCustomer();
+  public static String customerDataID;
+  public static String customerDataName;
+  public static int customerDataPhone;
+  public static String customerDataEmail;
+  public static String customerDataAddress;
   public static void addCars(ArrayList<CarProperty> carProperties) {
 
 //  try{
@@ -287,7 +291,7 @@ public class FileHandling {
     return true;
 
   }
-  public void deleteCar(String car_id) {
+  public static void deleteCar(String car_id) {
     int index = -1;
     for (CarProperty deletecar : displayCar) {
       if (deletecar.getVehicleId().equals(car_id)) {
@@ -345,7 +349,7 @@ public class FileHandling {
     return true;
 
   }
-  public void deleteMiniBus(String miniBus_id) {
+  public static void deleteMiniBus(String miniBus_id) {
     int index = -1;
     for (MiniBusProperty deleteMiniBus : displayMiniBus) {
       if (deleteMiniBus.getVehicleId().equals(miniBus_id)) {
@@ -378,7 +382,8 @@ public class FileHandling {
     }
     return true;
   }
-  public boolean returnLorry(String lorry_id) {
+  public static boolean returnLorry(String lorry_id) {
+
     int index;
     LorryProperty returnLorry = null;
 
@@ -401,7 +406,7 @@ public class FileHandling {
     return true;
 
   }
-  public void deleteLorry(String lorry_id) {
+  public static void deleteLorry(String lorry_id) {
     int index = -1;
     for (LorryProperty deleteLorry : displayLorry) {
       if (deleteLorry.getVehicleId().equals(lorry_id)) {
@@ -419,10 +424,16 @@ public class FileHandling {
     for (CustomerProperty customer : displayCustomer) {
       if (username.equals(customer.getUsername()) && password.equals(customer.getPassword())) {
         loggedIn = true;
+        customerDataID =customer.getCustomerId();
+        customerDataName= customer.getName();
+        customerDataPhone = customer.getPhoneNumber();
+        customerDataEmail= customer.getEmail();
+        customerDataAddress = customer.getAddress();
         break;
       }
     }
     return loggedIn;
 }
-}
+
+  }
 
